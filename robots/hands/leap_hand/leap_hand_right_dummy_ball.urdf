@@ -1,66 +1,70 @@
 
 <robot name="leap_right">
-  <link name="base"/>
   <!-- add xyz, rpy joints -->
+  <link name="base_link_x"/>
 
   <joint name="dummy_x_translation_joint" type="prismatic">
-    <parent link="base"/>
-    <child link="base_link_x"/>
+    <parent link="base_link_x"/>
+    <child link="base_link_y"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis xyz="1 0 0"/>
     <limit effort="300" lower="-10" upper="10" velocity="2.1750"/>
   </joint>
-  <link name="base_link_x"/>
+
+  <link name="base_link_y"/>
 
   <joint name="dummy_y_translation_joint" type="prismatic">
-    <parent link="base_link_x"/>
-    <child link="base_link_y"/>
+    <parent link="base_link_y"/>
+    <child link="base_link_z"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit effort="300" lower="-10" upper="10" velocity="2.1750"/>
   </joint>
-  <link name="base_link_y"/>
+
+  <link name="base_link_z"/>
 
   <joint name="dummy_z_translation_joint" type="prismatic">
-    <parent link="base_link_y"/>
-    <child link="base_link_z"/>
+    <parent link="base_link_z"/>
+    <child link="base_link_roll"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis xyz="0 0 1"/>
     <limit effort="300" lower="-10" upper="10" velocity="2.1750"/>
   </joint>
-  <link name="base_link_z"/>
-
-  <joint name="dummy_x_rotation_joint" type="revolute">
-    <parent link="base_link_z"/>
-    <child link="base_link_roll"/>
-    <origin rpy="0 0 0" xyz="0 0 0"/>
-    <axis xyz="1 0 0"/>
-    <limit effort="100.95" velocity="108.48" lower="-6.283185" upper="6.283185"/>
-  </joint>
 
   <link name="base_link_roll"/>
 
-  <joint name="dummy_y_rotation_joint" type="revolute">
+  <joint name="dummy_x_rotation_joint" type="revolute">
     <parent link="base_link_roll"/>
     <child link="base_link_pitch"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
-    <axis xyz="0 1 0"/>
+    <axis xyz="1 0 0"/>
     <limit effort="100.95" velocity="108.48" lower="-6.283185" upper="6.283185"/>
   </joint>
 
   <link name="base_link_pitch"/>
 
-  <joint name="dummy_z_rotation_joint" type="revolute">
+  <joint name="dummy_y_rotation_joint" type="revolute">
     <parent link="base_link_pitch"/>
     <child link="base_link_yaw"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100.95" velocity="108.48" lower="-6.283185" upper="6.283185"/>
+  </joint>
+
+  <link name="base_link_yaw"/>
+
+  <joint name="dummy_z_rotation_joint" type="revolute">
+    <parent link="base_link_yaw"/>
+    <child link="base"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <axis xyz="0 0 1"/>
     <limit effort="100.95" velocity="108.48" lower="-6.283185" upper="6.283185"/>
   </joint>
 
-  <link name="base_link_yaw"/>
+  <link name="base"/>
+
   <joint name="base_joint" type="fixed">
-    <parent link="base_link_yaw"/>
+    <parent link="base"/>
     <child link="palm_lower"/>
     <origin xyz="0 0.038 0.098" rpy="0 -1.57079 0"/>
   </joint>
@@ -274,17 +278,11 @@
         <box size="0.014 0.022 0.004"/>
       </geometry>
     </collision>
-    <!-- <collision>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="meshes/collision/white_tip.obj"/>
       </geometry>
-    </collision> -->
-    <collision>
-      <geometry>
-        <sphere radius="0.0134"/>
-      </geometry>
-      <origin rpy="0 0 0" xyz="-0.0015 -0.0382 0.0145"/>
     </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -292,6 +290,7 @@
       <inertia ixx="0.000003368" ixy="0.000000115" ixz="0" iyy="0.000001556" iyz="0" izz="0.000002863"/>
     </inertial>
   </link>
+
   <joint name="0" type="revolute">
     <origin xyz="-0.0122 0.03810 0.01450" rpy="-1.57079 0 1.57079"/>
     <parent link="mcp_joint"/>
@@ -460,17 +459,11 @@
         <box size="0.014 0.022 0.004"/>
       </geometry>
     </collision>
-    <!-- <collision>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="meshes/collision/white_tip.obj"/>
       </geometry>
-    </collision> -->
-    <collision>
-      <geometry>
-        <sphere radius="0.0134"/>
-      </geometry>
-      <origin rpy="0 0 0" xyz="-0.0015 -0.0382 0.0145"/>
     </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -646,17 +639,11 @@
         <box size="0.014 0.022 0.004"/>
       </geometry>
     </collision>
-    <!-- <collision>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="meshes/collision/white_tip.obj"/>
       </geometry>
-    </collision> -->
-    <collision>
-      <geometry>
-        <sphere radius="0.0134"/>
-      </geometry>
-      <origin rpy="0 0 0" xyz="-0.0015 -0.0382 0.0145"/>
     </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -696,7 +683,7 @@
     <limit effort="0.95" velocity="8.48" lower="-0.366" upper="2.042"/>
     <joint_properties friction="0.0"/>
   </joint>
-  <link name="pip_4">
+  <link name="thumb_temp_base">
     <visual>
       <origin xyz="-0.0053 0.0003 0.00078" rpy="-1.57079 -1.57079 0"/>
       <geometry>
@@ -704,7 +691,7 @@
       </geometry>
     </visual>
     <collision>     <!-- pip -->
-      <origin xyz="0.0075 -0.0002 -0.011" rpy="0 0 0"/>
+      <origin xyz="-0.0075 -0.0002 -0.011" rpy="0 0 0"/>
       <geometry>
         <box size="0.034 0.026 0.022"/>
       </geometry>
@@ -814,17 +801,11 @@
         <box size="0.008 0.024 0.018"/>
       </geometry>
     </collision>
-    <!-- <collision>
+    <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="meshes/collision/white_tip_thumb.obj"/>
       </geometry>
-    </collision> -->
-    <collision>
-      <geometry>
-        <sphere radius="0.0134"/>
-      </geometry>
-      <origin rpy="0 0 0" xyz="-0.0015 -0.051 -0.0143"/>
     </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -835,14 +816,14 @@
   <joint name="12" type="revolute">
     <origin xyz="-0.0693 -0.0012 -0.0216" rpy="0 1.57079 0"/>
     <parent link="palm_lower"/>
-    <child link="pip_4"/>
+    <child link="thumb_temp_base"/>
     <axis xyz="0 0 -1"/>
     <limit effort="0.95" velocity="8.48" lower="-0.349" upper="2.094"/>
     <joint_properties friction="0.0"/>
   </joint>
   <joint name="13" type="revolute">
     <origin xyz="0 0.0143 -0.013" rpy="1.57079 -1.57079 0"/>
-    <parent link="pip_4"/>
+    <parent link="thumb_temp_base"/>
     <child link="thumb_pip"/>
     <axis xyz="0 0 -1"/>
     <limit effort="0.95" velocity="8.48" lower="-0.47" upper="2.443"/>
