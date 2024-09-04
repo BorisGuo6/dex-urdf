@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot name="panda_gripper">
+  <link name="base_link_x"/>
   <joint name="dummy_x_translation_joint" type="prismatic">
     <parent link="base_link_x"/>
     <child link="base_link_y"/>
@@ -89,27 +90,72 @@
     <child link="panda_hand_tcp"/>
   </joint>
 
-   <link name="panda_hand_collision_ball_0">
+  <!-- panda_hand balls -->
+  <link name="panda_hand_collision_ball_0">
     <visual>
-    <geometry>
-    <sphere radius="0.022"/>
-    </geometry>
-    <material name="purple">
-    <color rgba="1.0 0.0 1.0 1.0"/>
+      <geometry>
+        <sphere radius="0.0460"/>
+      </geometry>
+      <material name="pure">
+      <color rgba="1.0 0.0 1.0 1.0"/>
     </material>
     </visual>
     <collision>
-    <geometry>
-    <sphere radius="0.022"/>
-    </geometry>
+      <geometry>
+      <sphere radius="0.0460"/>
+      </geometry>
     </collision>
   </link>
   <joint name="panda_hand_collision_ball_0_joint" type="fixed">
     <parent link="panda_hand"/>
     <child link="panda_hand_collision_ball_0"/>
-    <origin rpy="0 0 0" xyz="0.0 0.0 0.02 "/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.024"/>
   </joint>
 
+
+    <link name="panda_hand_collision_ball_1">
+    <visual>
+      <geometry>
+        <sphere radius="0.0460"/>
+      </geometry>
+      <material name="pure">
+      <color rgba="1.0 0.0 1.0 1.0"/>
+    </material>
+    </visual>
+    <collision>
+      <geometry>
+      <sphere radius="0.0460"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_hand_collision_ball_1_joint" type="fixed">
+    <parent link="panda_hand"/>
+    <child link="panda_hand_collision_ball_1"/>
+    <origin rpy="0 0 0" xyz="0.0 -0.06 0.024"/>
+  </joint>
+
+
+    <link name="panda_hand_collision_ball_2">
+    <visual>
+      <geometry>
+        <sphere radius="0.0460"/>
+      </geometry>
+      <material name="pure">
+      <color rgba="1.0 0.0 1.0 1.0"/>
+    </material>
+    </visual>
+    <collision>
+      <geometry>
+      <sphere radius="0.0460"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_hand_collision_ball_2_joint" type="fixed">
+    <parent link="panda_hand"/>
+    <child link="panda_hand_collision_ball_2"/>
+    <origin rpy="0 0 0" xyz="0.0 0.06 0.024"/>
+  </joint>
+  <!--  -->
 
 
 
@@ -150,6 +196,75 @@
                iyz="0" izz="7.5e-07"/>
     </inertial>
   </link>
+
+
+
+  <!-- panda_leftfinger balls -->
+  <link name="panda_leftfinger_collision_ball_0">
+    <visual>
+      <geometry>
+        <sphere radius="0.0120"/>
+      </geometry>
+      <material name="blue">
+      <color rgba="0.0 0.0 1.0 1.0"/>
+    </material>
+    </visual>
+    <collision>
+      <geometry>
+      <sphere radius="0.0120"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_leftfinger_collision_ball_0_joint" type="fixed">
+    <parent link="panda_leftfinger"/>
+    <child link="panda_leftfinger_collision_ball_0"/>
+    <origin rpy="0 0 0" xyz="0.0 0.02 0.014"/>
+  </joint>
+
+
+   <link name="panda_leftfinger_collision_ball_1">
+    <visual>
+      <geometry>
+        <sphere radius="0.0120"/>
+      </geometry>
+      <material name="blue">
+      <color rgba="0.0 0.0 1.0 1.0"/>
+    </material>
+    </visual>
+    <collision>
+      <geometry>
+      <sphere radius="0.0120"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_leftfinger_collision_ball_1_joint" type="fixed">
+    <parent link="panda_leftfinger"/>
+    <child link="panda_leftfinger_collision_ball_1"/>
+    <origin rpy="0 0 0" xyz="0.0 0.019 0.029"/>
+  </joint>
+
+  <link name="panda_leftfinger_collision_ball_2">
+    <visual>
+      <geometry>
+        <sphere radius="0.0120"/>
+      </geometry>
+      <material name="blue">
+      <color rgba="0.0 0.0 1.0 1.0"/>
+    </material>
+    </visual>
+    <collision>
+      <geometry>
+      <sphere radius="0.0120"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_leftfinger_collision_ball_2_joint" type="fixed">
+    <parent link="panda_leftfinger"/>
+    <child link="panda_leftfinger_collision_ball_2"/>
+    <origin rpy="0 0 0" xyz="0.0 0.009 0.045"/>
+  </joint>
+  <!--  -->
+
   <link name="panda_rightfinger">
     <visual>
       <origin rpy="0 0 3.141592653589793" xyz="0 0 0"/>
@@ -188,6 +303,77 @@
                iyz="0" izz="7.5e-07"/>
     </inertial>
   </link>
+
+
+
+  <!-- panda_rightfinger balls -->
+  <link name="panda_rightfinger_collision_ball_0">
+    <visual>
+      <geometry>
+        <sphere radius="0.0120"/>
+      </geometry>
+      <material name="blue">
+      <color rgba="0.0 0.0 1.0 1.0"/>
+    </material>
+    </visual>
+    <collision>
+      <geometry>
+      <sphere radius="0.0120"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_rightfinger_collision_ball_0_joint" type="fixed">
+    <parent link="panda_rightfinger"/>
+    <child link="panda_rightfinger_collision_ball_0"/>
+    <origin rpy="0 0 0" xyz="0.0 -0.02 0.014"/>
+  </joint>
+
+
+   <link name="panda_rightfinger_collision_ball_1">
+    <visual>
+      <geometry>
+        <sphere radius="0.0120"/>
+      </geometry>
+      <material name="blue">
+      <color rgba="0.0 0.0 1.0 1.0"/>
+    </material>
+    </visual>
+    <collision>
+      <geometry>
+      <sphere radius="0.0120"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_rightfinger_collision_ball_1_joint" type="fixed">
+    <parent link="panda_rightfinger"/>
+    <child link="panda_rightfinger_collision_ball_1"/>
+    <origin rpy="0 0 0" xyz="0.0 -0.019 0.029"/>
+  </joint>
+
+  <link name="panda_rightfinger_collision_ball_2">
+    <visual>
+      <geometry>
+        <sphere radius="0.0120"/>
+      </geometry>
+      <material name="blue">
+      <color rgba="0.0 0.0 1.0 1.0"/>
+    </material>
+    </visual>
+    <collision>
+      <geometry>
+      <sphere radius="0.0120"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_rightfinger_collision_ball_2_joint" type="fixed">
+    <parent link="panda_rightfinger"/>
+    <child link="panda_rightfinger_collision_ball_2"/>
+    <origin rpy="0 0 0" xyz="0.0 -0.009 0.045"/>
+  </joint>
+  <!--  -->
+
+
+
   <joint name="panda_finger_joint1" type="prismatic">
     <parent link="panda_hand"/>
     <child link="panda_leftfinger"/>
